@@ -1,6 +1,12 @@
-const nextConfig = {
-  output: 'export',  // 静态导出模式，
-  distDir: 'out' // 自定义构建输出目录
-}
+/** @type {import('next').NextConfig} */
+const isProduction = process.env.NODE_ENV === 'production';
 
-module.exports = nextConfig
+const nextConfig = {
+  basePath: isProduction ? '/personal-web' : '', // 替换为您的仓库名称
+  assetPrefix: isProduction ? '/personal-web/' : '',
+  trailingSlash: false,
+  output: 'export',
+  distDir: 'out',
+};
+
+export default nextConfig;
